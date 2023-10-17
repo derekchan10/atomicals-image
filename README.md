@@ -93,11 +93,16 @@ atom-cli `pwd`/wallets/wallet10.json mint-dft pepe
 ```
 
 ### image-gen.sh
-```
+```shell
 sh image-gen.sh "https://cryptopunks.app/public/images/cryptopunks/punk" 0 10 "png" image-punks.txt
 ```
 
 ### image-down.sh
-```
+```shell
 sh image-down.sh image-punks.txt image/punks
+```
+
+### mint-nft.sh
+```shell
+sh mint-nft.sh `pwd`/wallet.json `pwd`/images
 ```
