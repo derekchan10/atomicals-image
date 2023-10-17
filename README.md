@@ -104,5 +104,5 @@ sh image-down.sh image-punks.txt image/punks
 
 ### mint-nft.sh
 ```shell
-sh mint-nft.sh `pwd`/wallet.json `pwd`/images
+sh mint-nft.sh `pwd`/wallet.json `pwd`/image/punks
 ```
