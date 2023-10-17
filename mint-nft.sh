@@ -1,11 +1,5 @@
 #!/bin/sh
 
-# 文件所在目录
-wallet_json=$1
-images_dir=$2
-gas_fee=${3:-1}
-bitworkc=${4:-0000}
-
 mint() {
   wallet=$1
   image_path=$2
@@ -19,6 +13,12 @@ mint() {
     echo "wallet file $wallet not exit";
   fi;
 }
+
+
+wallet_json=$1
+images_dir=$2
+gas_fee=${3:-1}
+bitworkc=${4:-0000}
 
 # 遍历文件
 for image in $images_dir/*
