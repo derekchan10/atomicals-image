@@ -12,7 +12,7 @@ alias atom-mint='f() { if [ -f "$1" ]; then docker run -it --rm -v "$1":/wallet.
 for image in $images_dir/*
 do
   filename=$(echo $image | awk -F'/' '{print $NF}')
-  echo $("$wallet_json" "$images_dir" mint-nft "image/$filename" --satsbyte=$gas_fee --funding=funding --bitworkc="$bitworkc")
+
   # 调用命令,用$image传递文件名
   atom-mint "$wallet_json" "$images_dir" mint-nft "image/$filename" --satsbyte=$gas_fee --funding=funding --bitworkc="$bitworkc"
 
