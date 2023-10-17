@@ -19,6 +19,7 @@ run () {
   images_dir=$2
   gas_fee=${3:-1}
   bitworkc=${4:-0000}
+  satsoutput=${4:-546}
 
   # 遍历文件
   for image in $images_dir/*
@@ -26,7 +27,7 @@ run () {
     filename=$(echo $image | awk -F'/' '{print $NF}')
 
     # 调用命令,用$image传递文件名
-    mint "$wallet_json" "$images_dir" mint-nft "image/$filename" --satsbyte="$gas_fee" --funding="funding" --bitworkc="$bitworkc"
+    mint "$wallet_json" "$images_dir" mint-nft "image/$filename" --satsbyte="$gas_fee" --funding="funding" --bitworkc="$bitworkc" --satsoutput="$satsoutput"
 
     # 其他处理逻辑
     echo "Processed image: $image"
