@@ -30,11 +30,11 @@ run () {
 
 
   # 跳到atommap text文件夹，拉取git记录
-  cd /root/blockchain-tools
+  cd /root/blockchaintools
   git pull
 
   # 随机获取atommap text的编号
-  line=$(random_line "/root/blockchain-tools/tools/atommap.txt")
+  line=$(random_line "/root/blockchaintools/tools/atommap.txt")
 
   # mint
 
