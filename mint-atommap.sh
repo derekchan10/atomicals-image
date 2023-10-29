@@ -49,6 +49,13 @@ run () {
   # 其他处理逻辑
   echo "Processed image: $image"
 }
+while true; do
+  run $@
+  if [ $? -eq 0 ]; then
+    echo "mint success."
+  else
+    echo "retry in 3 seconds"
+    sleep 3
+  fi
+done
 
-
-run $@
