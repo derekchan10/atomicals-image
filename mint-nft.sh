@@ -19,7 +19,7 @@ run () {
   images_dir=$2
   gas_fee=${3:-1}
   bitworkc=${4:-0000}
-  satsoutput=${4:-546}
+  satsoutput=${5:-546}
 
   # 遍历文件
   for image in $images_dir/*
