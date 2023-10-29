@@ -17,7 +17,8 @@ mint() {
 random_line () {
   file=$1
   lines=$(wc -l < $file)
-  random=$(( $RANDOM % $lines + 1))
+  number=$(od -An -N2 -i /dev/random)
+  random=$(($number % $lines + 1))
   echo $(sed -n "${random}p" $file)
 }
 
@@ -25,7 +26,6 @@ run () {
   wallet_json=$1
   images_dir=$2
   gas_fee=${3:-1}
-  bitworkc=${4:-0000}
   satsoutput=${5:-546}
 
 
@@ -40,6 +40,7 @@ run () {
 
   # 遍历文件
   filename=$(echo $line".atommap.svg")
+  bitworkc=$(echo "ab"$line)
   echo $filename
 
   # 调用命令,用$image传递文件名
