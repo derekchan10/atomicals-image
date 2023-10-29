@@ -19,7 +19,7 @@ mkdir -p $images_dir
 while read line; do
   filename=$(echo $line | awk -F'/' '{print $NF}')
   save_path=$images_dir/$filename
-  wget -O "$save_path" "$line"
+  curl -o "$save_path" "$line"
 
   echo "Saved image: $line"
 

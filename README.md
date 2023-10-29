@@ -106,3 +106,14 @@ sh image-down.sh image-punks.txt image/punks
 ```shell
 sh mint-nft.sh `pwd`/wallet.json `pwd`/image/punks
 ```
+
+### docker mint-nft
+```shell
+atom-mint /root/atomicals-image/wallet.json /root/atomicals-image/image/punks mint-nft image/punk0000.png --satsbyte=1 --funding=funding --bitworkc=0000
+```
+
+### docker atom cli
+```shell
+
+atom-cli `pwd`/wallet.json balances
+```
