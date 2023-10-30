@@ -59,7 +59,7 @@ docker_count () {
 }
 
 core_count=$(core_count)
-count=$(($core_count-5))
+count=$(($core_count-6))
 
 while true; do
   docker_count=$(docker_count)
