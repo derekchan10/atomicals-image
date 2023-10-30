@@ -63,7 +63,7 @@ count=$(($core_count-1))
 
 while true; do
   docker_count=$(docker_count)
-  if [ $docker_count -le $count ]; then
+  if [ $docker_count -lt $count ]; then
     run $@
     echo "mint start."
   else
