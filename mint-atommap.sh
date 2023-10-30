@@ -8,7 +8,7 @@ mint() {
 
   if [ -f "$wallet" ];
   then
-    docker run -it --rm -v "$wallet":/wallet.json -v "$image_path":/app/image atomicals yarn cli "$@";
+    docker run -itd --rm -v "$wallet":/wallet.json -v "$image_path":/app/image atomicals yarn cli "$@";
   else
     echo "wallet file $wallet not exit";
   fi;
@@ -49,12 +49,25 @@ run () {
   # 其他处理逻辑
   echo "Processed image: $image"
 }
+
+core_count () {
+  echo $(nproc --all)
+}
+
+docker_count () {
+  echo $(docker ps | grep atomicals -c)
+}
+
+core_count=$(core_count)
+count=$(($core_count-1))
+
 while true; do
-  run $@
-  if [ $? -eq 0 ]; then
-    echo "mint success."
+  docker_count=$(docker_count)
+  if [ $docker_count -le $count ]; then
+    run $@
+    echo "mint start."
   else
-    echo "retry in 3 seconds"
+    echo "current docker count :"$docker_count"-"$(date +%Y-%m-%d" "%H:%M:%S)
     sleep 3
   fi
 done
