@@ -35,6 +35,7 @@ run () {
   line=$(random_line "/root/blockchaintools/tools/atommap.txt")
 
   gas_fee=$(cat "/root/blockchaintools/tools/atom_cli_gas.txt")
+  echo "gas_fee:${gas_fee}"
 
   # mint
 
