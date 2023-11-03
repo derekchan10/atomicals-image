@@ -25,9 +25,7 @@ random_line () {
 run () {
   wallet_json=$1
   images_dir=$2
-  gas_fee=${3:-1}
-  satsoutput=${5:-546}
-
+  satsoutput=${3:-546}
 
   # 跳到atommap text文件夹，拉取git记录
   cd /root/blockchaintools
@@ -35,6 +33,8 @@ run () {
 
   # 随机获取atommap text的编号
   line=$(random_line "/root/blockchaintools/tools/atommap.txt")
+
+  gas_fee=$(cat "/root/blockchaintools/tools/atom_cli_gas.txt")
 
   # mint
 
