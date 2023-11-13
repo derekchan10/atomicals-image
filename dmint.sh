@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dmint() {
+mint() {
   wallet=$1
   image_path=$2
   shift
