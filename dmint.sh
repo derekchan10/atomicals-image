@@ -43,6 +43,7 @@ run () {
 
   # 随机获取图片的编号
   line=$(random_line `pwd`"/image.txt")
+  echo "line:${line}"
   filename=$(sed -n $line'p' ./image.txt)
   echo $filename
 
