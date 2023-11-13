@@ -117,3 +117,20 @@ atom-mint /root/atomicals-image/wallet.json /root/atomicals-image/image/punks mi
 
 atom-cli `pwd`/wallet.json balances
 ```
+
+### atommap
+```shell
+sh mint-atommap.sh `pwd`/wallet-dc.json `pwd`/image/atommap
+```
+
+### dmint
+```shell
+# 下载图片
+curl -o image.zip https://raw.githubusercontent.com/Atombitworker/Atom-map/main/atommap_svg_final.zip && unzip -d image/xxx image.zip
+
+# 生成图片名称
+sh image-gen.sh "" 0 10 "png" image-punks.txt
+
+# 执行dmint
+sh dmint.sh `pwd`/wallet-dc.json `pwd`/image/xxx
+```
