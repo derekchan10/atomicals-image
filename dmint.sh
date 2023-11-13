@@ -46,7 +46,7 @@ run () {
   satsoutput=${5:-546}
   daemon=${6:-1}
 
-  echo "wallet:${wallet_json},image dir:${images_dir},container:${container},bitworkc:{$bitworkc},satsoutput:{$satsoutput}"
+  echo "wallet:${wallet_json},image dir:${images_dir},container:${container},bitworkc:${bitworkc},satsoutput:${satsoutput},darmon=${daemon}"
 
 
   gas_fee=$(gas_fee)
