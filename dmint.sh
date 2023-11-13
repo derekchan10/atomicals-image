@@ -10,7 +10,7 @@ mint() {
 
   if [ -f "$wallet" ];
   then
-    docker run -itd --rm -v "$wallet":/wallet.json -v "$image_path":/app/image atomicals yarn cli "$@";
+    docker run -it --rm -v "$wallet":/wallet.json -v "$image_path":/app/image atomicals yarn cli "$@";
   else
     echo "wallet file $wallet not exit";
   fi;
