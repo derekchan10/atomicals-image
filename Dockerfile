@@ -6,7 +6,8 @@ RUN corepack enable yarn
 # build image
 FROM base AS build
 
-ARG VERSION=6f1b8d756b8df298a6d55ed1f20ba509afde2b92
+#ARG VERSION=6f1b8d756b8df298a6d55ed1f20ba509afde2b92
+ARG VERSION=latest
 
 ADD https://github.com/atomicals/atomicals-js/archive/${VERSION}.zip /tmp/
 
