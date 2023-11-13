@@ -63,10 +63,10 @@ docker_count () {
 
 core_count=$(core_count)
 
-if [ $core_count -lt 12 ]
+if [ $core_count -lt 8 ]
   count=$(($core_count/2))
 else
-  count=$(($core_count-6))
+  count=$(($core_count-4))
 
 while true; do
   docker_count=$(docker_count)
