@@ -47,7 +47,7 @@ run () {
   echo $filename
 
   # 调用命令,用$image传递文件名
-  dmint "$wallet_json" "$images_dir" mint-dmitem $container "$bitworkc"  "image/$filename" --satsbyte="$gas_fee" --funding="funding" --satsoutput="$satsoutput"
+  mint "$wallet_json" "$images_dir" mint-dmitem $container "$bitworkc"  "image/$filename" --satsbyte="$gas_fee" --funding="funding" --satsoutput="$satsoutput"
 
   # 其他处理逻辑
   echo "Processed image: $image"
