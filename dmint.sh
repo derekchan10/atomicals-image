@@ -42,9 +42,7 @@ run () {
   echo "gas_fee:${gas_fee}"
 
   # 随机获取图片的编号
-  line=$(random_line `pwd`"/image.txt")
-  echo "line:${line}"
-  filename=$(sed -n $line'p' ./image.txt)
+  filename=$(random_line `pwd`"/image.txt")
   echo $filename
 
   # 调用命令,用$image传递文件名
