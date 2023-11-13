@@ -37,6 +37,8 @@ run () {
   bitworkc=${4:-1000}
   satsoutput=${5:-546}
 
+  echo "wallet:${wallet_json},image dir:${images_dir},container:${container},bitworkc:{$bitworkc},satsoutput:{$satsoutput}"
+
 
   gas_fee=$(gas_fee)
   echo "gas_fee:${gas_fee}"
