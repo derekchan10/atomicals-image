@@ -67,6 +67,7 @@ if [ $core_count -lt 8 ]
   count=$(($core_count/2))
 else
   count=$(($core_count-4))
+fi
 
 while true; do
   docker_count=$(docker_count)
