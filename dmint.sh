@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mint() {
+dmint() {
   wallet=$1
   image_path=$2
   shift
@@ -33,23 +33,21 @@ random_line () {
 run () {
   wallet_json=$1
   images_dir=$2
-  satsoutput=${3:-546}
+  container=$3
+  bitworkc=${4:-1000}
+  satsoutput=${5:-546}
 
-  # 随机获取图片的编号
-  line=$(random_line `pwd`"/image.txt")
 
   gas_fee=$(gas_fee)
   echo "gas_fee:${gas_fee}"
 
-  # mint
-
-  # 遍历文件
+  # 随机获取图片的编号
+  line=$(random_line `pwd`"/image.txt")
   filename=$(sed -n $line'p' ./image.txt)
-  bitworkc=$(echo "ab"$line)
   echo $filename
 
   # 调用命令,用$image传递文件名
-  mint "$wallet_json" "$images_dir" mint-nft "image/$filename" --satsbyte="$gas_fee" --funding="funding" --bitworkc="$bitworkc" --satsoutput="$satsoutput"
+  dmint "$wallet_json" "$images_dir" mint-dmitem $container "$bitworkc"  "image/$filename" --satsbyte="$gas_fee" --funding="funding" --satsoutput="$satsoutput"
 
   # 其他处理逻辑
   echo "Processed image: $image"
