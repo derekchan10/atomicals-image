@@ -54,7 +54,7 @@ run () {
 
   # 随机获取图片的编号
   filename=$(random_line `pwd`"/image.txt")
-  echo $filename
+  echo "file:"$filename
 
   # 调用命令,用$image传递文件名
   mint "$wallet_json" "$images_dir" "$daemon" mint-dmitem $container "$bitworkc"  "image/$filename" --satsbyte="$gas_fee" --funding="funding" --satsoutput="$satsoutput"
