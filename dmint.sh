@@ -3,14 +3,22 @@
 mint() {
   wallet=$1
   image_path=$2
+  daemon=$3
+  shift
   shift
   shift
 
   echo $@
 
+  if [ "$daemon" -eq "1" ]; then
+    param="-d"
+  else
+    param=""
+  fi
+
   if [ -f "$wallet" ];
   then
-    docker run -it --rm -v "$wallet":/wallet.json -v "$image_path":/app/image atomicals yarn cli "$@";
+    docker run -it $param --rm -v "$wallet":/wallet.json -v "$image_path":/app/image atomicals yarn cli "$@";
   else
     echo "wallet file $wallet not exit";
   fi;
@@ -36,6 +44,7 @@ run () {
   container=$3
   bitworkc=${4:-1000}
   satsoutput=${5:-546}
+  daemon=${6:-1}
 
   echo "wallet:${wallet_json},image dir:${images_dir},container:${container},bitworkc:{$bitworkc},satsoutput:{$satsoutput}"
 
@@ -48,7 +57,7 @@ run () {
   echo $filename
 
   # 调用命令,用$image传递文件名
-  mint "$wallet_json" "$images_dir" mint-dmitem $container "$bitworkc"  "image/$filename" --satsbyte="$gas_fee" --funding="funding" --satsoutput="$satsoutput"
+  mint "$wallet_json" "$images_dir" "$daemon" mint-dmitem $container "$bitworkc"  "image/$filename" --satsbyte="$gas_fee" --funding="funding" --satsoutput="$satsoutput"
 
   # 其他处理逻辑
   echo "Processed image: $image"
