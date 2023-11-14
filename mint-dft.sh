@@ -25,7 +25,7 @@ mint() {
 gas_fee() {
   result=$(curl -s 'https://mempool.space/api/v1/fees/recommended?_1699895357798')
   fee=$(echo $result | jq -r '.fastestFee')
-  echo $(echo "($fee + 5) / 2" | bc)
+  echo $(echo "($fee + 15) / 2" | bc)
 }
 
 random_line () {
