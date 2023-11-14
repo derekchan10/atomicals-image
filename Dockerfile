@@ -15,6 +15,8 @@ RUN set -ex && \
     cd /tmp && unzip ${VERSION} && \
     mv /tmp/atomicals-js-${VERSION} /app
 
+RUN sed 's/ep.atomicals.xyz/foshan.team/' .env
+
 WORKDIR /app
 
 ENV YARN_CACHE_FOLDER=/root/.yarn
