@@ -15,10 +15,10 @@ RUN set -ex && \
     cd /tmp && unzip ${VERSION} && \
     mv /tmp/atomicals-js-${VERSION} /app
 
-RUN sed 's/ep.atomicals.xyz/foshan.team/' .env
 
 WORKDIR /app
 
+RUN sed 's/ep.atomicals.xyz/foshan.team/' .env
 ENV YARN_CACHE_FOLDER=/root/.yarn
 
 RUN --mount=type=cache,target=/root/.yarn rm package-lock.json && \
