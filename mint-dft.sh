@@ -2,9 +2,7 @@
 
 mint() {
   wallet=$1
-  image_path=$2
-  daemon=$3
-  shift
+  daemon=$2
   shift
   shift
 
@@ -18,7 +16,7 @@ mint() {
 
   if [ -f "$wallet" ];
   then
-    docker run -it $param --rm -v "$wallet":/wallet.json -v "$image_path":/app/image atomicals yarn cli "$@";
+    docker run -it $param --rm -v "$wallet":/wallet.json atomicals yarn cli "$@";
   else
     echo "wallet file $wallet not exit";
   fi;
@@ -40,11 +38,8 @@ random_line () {
 
 run () {
   wallet_json=$1
-  images_dir=$2
-  container=$3
-  bitworkc=${4:-1000}
-  satsoutput=${5:-546}
-  daemon=${6:-1}
+  ticket=$2
+  daemon=${3:-1}
 
   echo "wallet:${wallet_json},image dir:${images_dir},container:${container},bitworkc:${bitworkc},satsoutput:${satsoutput},daemon=${daemon}"
 
@@ -52,12 +47,8 @@ run () {
   gas_fee=$(gas_fee)
   echo "gas_fee:${gas_fee}"
 
-  # 随机获取图片的编号
-  filename=$(random_line `pwd`"/image.txt")
-  echo "file:"$filename
-
   # 调用命令,用$image传递文件名
-  mint "$wallet_json" "$images_dir" "$daemon" mint-dmitem $container "$bitworkc"  "image/$filename" --satsbyte="$gas_fee" --funding="funding" --satsoutput="$satsoutput"
+  mint "$wallet_json" "$daemon" mint-dfp --satsbyte="$gas_fee" --funding="funding"
 
   # 其他处理逻辑
   echo "Processed image: $image"
