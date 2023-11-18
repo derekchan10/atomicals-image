@@ -30,12 +30,18 @@ gas_fee() {
   echo $(echo "($fee + 16) / 2" | bc)
 }
 
-random_line () {
-  file=$1
-  lines=$(wc -l < $file)
-  number=$(od -An -N2 -i /dev/random)
-  random=$(($number % $lines + 1))
-  echo $(sed -n "${random}p" $file)
+random_file () {
+  # 获取所有文件名
+  files=$(ls $1)
+
+  # 计算文件总数
+  count=$(echo "$files" | wc -l)
+
+  # 生成一个随机数作为索引
+  index=$(($RANDOM % $count + 1))
+
+  # 使用awk获取随机行即文件名
+  echo $(echo "$files" | awk -v idx=$index 'NR == idx {print $1}')
 }
 
 run () {
@@ -48,12 +54,11 @@ run () {
 
   echo "wallet:${wallet_json},image dir:${images_dir},container:${container},bitworkc:${bitworkc},satsoutput:${satsoutput},daemon=${daemon}"
 
-
   gas_fee=$(gas_fee)
   echo "gas_fee:${gas_fee}"
 
   # 随机获取图片的编号
-  filename=$(random_line `pwd`"/image.txt")
+  filename=$(random_file $images_dir)
   echo "file:"$filename
 
   # 调用命令,用$image传递文件名
@@ -64,7 +69,20 @@ run () {
 }
 
 core_count () {
-  echo $(nproc --all)
+  cores=0
+
+  os=$(uname)
+
+  if [ "$os" = "Darwin" ]; then
+    # macOS
+    cores=$(sysctl -n hw.ncpu)
+
+  elif [ "$os" = "Linux" ]; then
+    # Ubuntu/Debian
+    cores=$(nproc --all)
+  fi
+
+  echo $cores
 }
 
 docker_count () {
@@ -72,6 +90,7 @@ docker_count () {
 }
 
 core_count=$(core_count)
+echo "core_count:"$core_count
 
 if [ $core_count -lt 8 ]; then
   count=$(($core_count/2))
@@ -89,4 +108,3 @@ while true; do
     sleep 3
   fi
 done
-
