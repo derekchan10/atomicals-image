@@ -89,22 +89,35 @@ docker_count () {
   echo $(docker ps | grep atomicals -c)
 }
 
-core_count=$(core_count)
-echo "core_count:"$core_count
 
-if [ $core_count -lt 8 ]; then
-  count=$(($core_count/2))
-else
-  count=$(($core_count-4))
-fi
-
-while true; do
-  docker_count=$(docker_count)
-  if [ $docker_count -lt $count ]; then
-    run $@
-    echo "mint start."
+start () {
+  core_count=$1
+  re='^[0-9]+$'
+  if [[ $core_count =~ $re ]]; then
+    shift
   else
-    echo "current docker count :"$docker_count"-"$(date +%Y-%m-%d" "%H:%M:%S)
-    sleep 3
+    core_count=$(core_count)
   fi
-done
+
+  echo "core_count:"$core_count
+
+  if [ $core_count -lt 8 ]; then
+    count=$(($core_count/2))
+  else
+    count=$(($core_count-4))
+  fi
+
+  while true; do
+    docker_count=$(docker_count)
+    if [ $docker_count -lt $count ]; then
+      run $@
+      echo "mint start."
+    else
+      echo "current docker count :"$docker_count"-"$(date +%Y-%m-%d" "%H:%M:%S)
+      sleep 3
+    fi
+  done
+}
+
+start $@
+

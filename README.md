@@ -128,8 +128,12 @@ sh mint-atommap.sh `pwd`/wallet-dc.json `pwd`/image/atommap
 # 下载图片
 curl -o image.zip https://raw.githubusercontent.com/Atombitworker/Atom-map/main/atommap_svg_final.zip && unzip -d image/xxx image.zip
 
-# 执行dmint
+# 执行dmint，自动匹配CPU核心数
 # sh dmint.sh `pwd`/wallet-dc.json `pwd`/image/xxx container_name 1000 546 0
 # sh dmint.sh `钱包.json` `图片文件夹路径` `合集名` `bitworkc` `sats:默认546` `是否后台运行:默认1`
 sh dmint.sh `pwd`/wallet-dc.json `pwd`/image/xxx container_name
+
+# 执行dmint，自定义后台执行数量
+# # sh dmint.sh `进程数量` `钱包.json` `图片文件夹路径` `合集名` `bitworkc` `sats:默认546` `是否后台运行:默认1`
+sh dmint.sh 10 `pwd`/wallet-dc.json `pwd`/image/xxx container_name
 ```
