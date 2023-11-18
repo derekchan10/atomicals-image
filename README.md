@@ -130,6 +130,6 @@ curl -o image.zip https://raw.githubusercontent.com/Atombitworker/Atom-map/main/
 
 # 执行dmint
 # sh dmint.sh `pwd`/wallet-dc.json `pwd`/image/xxx container_name 1000 546 0
-# sh dmint.sh `钱包.json` `图片文件夹路径` `合辑名` `bitworkc` `sats:默认546` `是否后台运行:默认1`
+# sh dmint.sh `钱包.json` `图片文件夹路径` `合集名` `bitworkc` `sats:默认546` `是否后台运行:默认1`
 sh dmint.sh `pwd`/wallet-dc.json `pwd`/image/xxx container_name
 ```
