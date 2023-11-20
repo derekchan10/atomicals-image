@@ -24,11 +24,63 @@ mint() {
   fi;
 }
 
+file_time() {
+  # 指定要检查的文件
+  file=$1
+  os=$(uname)
+  if [ "$os" = "Darwin" ]; then
+    # macOS
+    modified=$(stat -f "%m" "$file")
+  elif [ "$os" = "Linux" ]; then
+    # Ubuntu/Debian
+    modified=$(stat -c %Y "$file")
+  fi
+
+  now=$(date +%s)
+
+  echo $((now - modified))
+}
+
+set_value() {
+  file=$1
+  val=$2
+  echo "$val" > "$file"
+}
+
+get_value() {
+  echo $(cat $1)
+}
+
 gas_fee() {
   result=$(curl -s 'https://mempool.space/api/v1/fees/recommended?_1699895357798')
   fee=$(echo $result | jq -r '.fastestFee')
-  echo $(echo "($fee + 16) / 2" | bc)
+
+  gas_file="./gas.txt"
+  gas_offset_file="./gas_offset.txt"
+  prev_fee=$(get_value "$gas_file")
+  gas_offset=$(get_value "$gas_offset_file")
+
+  if [ -z "$prev_fee" ]; then
+    set_value "$gas_file" "$fee"
+    set_value "$gas_offset_file" "0"
+  else
+    file_second=$(file_time "$gas_file")
+    if [ $file_second -ge 30 ]; then
+      if [ $fee -ge $prev_fee ]; then
+        gas_offset=$((fee - prev_fee))
+        set_value "$gas_file" "$fee"
+        set_value "$gas_offset_file" "$gas_offset"
+      else
+        gas_offset=0
+        set_value "$gas_file" "$fee"
+        set_value "$gas_offset_file" "$gas_offset"
+      fi
+    fi
+  fi
+
+  echo $(echo "($fee + $gas_offset) / 1.8" | bc)
 }
+
 
 random_file () {
   # 获取所有文件名
@@ -55,7 +107,7 @@ run () {
   echo "wallet:${wallet_json},image dir:${images_dir},container:${container},bitworkc:${bitworkc},satsoutput:${satsoutput},daemon=${daemon}"
 
   gas_fee=$(gas_fee)
-  echo "gas_fee:${gas_fee}"
+  echo "gas_fee:"$gas_fee
 
   # 随机获取图片的编号
   filename=$(random_file $images_dir)
@@ -91,21 +143,20 @@ docker_count () {
 
 
 start () {
-  core_count=$1
+  count=$1
   re='^[0-9]+$'
-  if [[ $core_count =~ $re ]]; then
+  if [[ $count =~ $re ]]; then
     shift
   else
     core_count=$(core_count)
+    if [ $core_count -lt 8 ]; then
+      count=$(($core_count/2))
+    else
+      count=$(($core_count-4))
+    fi
   fi
 
-  echo "core_count:"$core_count
-
-  if [ $core_count -lt 8 ]; then
-    count=$(($core_count/2))
-  else
-    count=$(($core_count-4))
-  fi
+  echo "core_count:"$count
 
   while true; do
     docker_count=$(docker_count)
@@ -120,4 +171,3 @@ start () {
 }
 
 start $@
-
