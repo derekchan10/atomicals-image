@@ -54,7 +54,11 @@ set_value() {
 }
 
 get_value() {
-  echo $(cat $1)
+  if [ -e "$1" ]; then
+    echo $(cat $1)
+  else
+    echo 0
+  fi
 }
 
 gas_fee() {
