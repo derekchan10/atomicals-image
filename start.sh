@@ -8,11 +8,7 @@ start () {
     shift
   else
     core_count=$(core_count)
-    if [ $core_count -lt 8 ]; then
-      count=$(($core_count/2))
-    else
-      count=$(($core_count-4))
-    fi
+    count=$(($core_count/2))
   fi
 
   echo "core_count:"$count
