@@ -21,7 +21,7 @@ WORKDIR /app
 RUN sed -i 's/ep.atomicals.xyz/ep.atomicalswallet.com/' .env
 ENV YARN_CACHE_FOLDER=/root/.yarn
 
-RUN --mount=type=cache,target=/root/.yarn rm package-lock.json && \
+RUN --mount=type=cache,target=/root/.yarn \
     yarn && yarn build && \
     # remove dev dependencies
     yarn install --production && \
