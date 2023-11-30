@@ -18,7 +18,8 @@ RUN set -ex && \
 
 WORKDIR /app
 
-RUN sed -i 's/ep.atomicals.xyz/ep.consync.xyz/' .env
+RUN sed -i 's/ep.atomicals.xyz/ep.atomicalswallet.com/' .env
+RUN #sed -i 's/https:\/\/ep.atomicals.xyz/http:\/\/192.168.2.88:8080/' .env
 ENV YARN_CACHE_FOLDER=/root/.yarn
 
 RUN --mount=type=cache,target=/root/.yarn \
