@@ -88,7 +88,7 @@ gas_fee() {
     fi
   fi
 
-  echo $(echo "($fee + $gas_offset) / 1.9" | bc)
+  echo $(echo "($fee + $gas_offset) / 2" | bc)
 }
 
 
