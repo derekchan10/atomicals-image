@@ -70,7 +70,7 @@ gas_fee() {
   prev_fee=$(get_value "$gas_file")
   gas_offset=$(get_value "$gas_offset_file")
 
-  if [ -z "$prev_fee" ]; then
+  if [ "$prev_fee" -eq "0" ]; then
     set_value "$gas_file" "$fee"
     set_value "$gas_offset_file" "0"
   else
