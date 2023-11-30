@@ -55,7 +55,12 @@ set_value() {
 
 get_value() {
   if [ -e "$1" ]; then
-    echo $(cat $1)
+    res=$(cat $1)
+    if [ -z "$res" ]; then
+      echo 0
+    else
+      echo $res
+    fi
   else
     echo 0
   fi
@@ -64,31 +69,11 @@ get_value() {
 gas_fee() {
   result=$(curl -s 'https://mempool.space/api/v1/fees/recommended?_1699895357798')
   fee=$(echo $result | jq -r '.fastestFee')
-
-  gas_file="./gas.txt"
-  gas_offset_file="./gas_offset.txt"
-  prev_fee=$(get_value "$gas_file")
-  gas_offset=$(get_value "$gas_offset_file")
-
-  if [ "$prev_fee" -eq "0" ]; then
-    set_value "$gas_file" "$fee"
-    set_value "$gas_offset_file" "0"
+  if [ -z "$fee" ]; then
+    echo $(gas_fee)
   else
-    file_second=$(file_time "$gas_file")
-    if [ $file_second -ge 30 ]; then
-      if [ $fee -ge $prev_fee ]; then
-        gas_offset=$((fee - prev_fee))
-        set_value "$gas_file" "$fee"
-        set_value "$gas_offset_file" "$gas_offset"
-      else
-        gas_offset=0
-        set_value "$gas_file" "$fee"
-        set_value "$gas_offset_file" "$gas_offset"
-      fi
-    fi
+    echo $(echo "$fee / 1.8" | bc)
   fi
-
-  echo $(echo "($fee + $gas_offset) / 2" | bc)
 }
 
 
