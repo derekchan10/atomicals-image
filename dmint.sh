@@ -8,11 +8,13 @@ run () {
   dir=$2
   container=$3
   daemon=${4:-1}
-  satsoutput=${5:-546}
+  gas_offset=${5:-0}
+  satsoutput=${6:-546}
 
   echo "wallet:${wallet_json},dir:${dir},container:${container},satsoutput:${satsoutput},daemon=${daemon}"
 
   gas_fee=$(gas_fee)
+  gas_fee=$((gas_fee + gas_offset))
   echo "gas_fee:$gas_fee"
 
   # 随机获取图片的编号
