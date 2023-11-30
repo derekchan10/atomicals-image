@@ -21,7 +21,7 @@ run () {
   filename=$(random_file $dir)
   echo "file:$filename"
 
-  item=$(basename "$filename" | sed 's/\.[^.]*$//')
+  item=$(basename "$filename" | sed 's/\.[^.]*$//' |  sed 's/item-//')
   echo "item:$item"
 
   # 调用命令,用$image传递文件名
