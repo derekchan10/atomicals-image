@@ -130,10 +130,10 @@ curl -o file.zip https://raw.githubusercontent.com/Atombitworker/Atom-map/main/a
 
 # 执行dmint，自动匹配CPU核心数
 # sh dmint.sh `pwd`/wallet.json `pwd`/image/xxx container_name 1000 546 0
-# sh dmint.sh `钱包.json` `图片文件夹路径` `合集名` `是否后台运行:默认1` `sats:默认546` 
-sh dmint.sh `pwd`/wallet.json `pwd`/image/xxx "#container"
+# sh dmint.sh `钱包.json` `图片文件夹路径` `合集名` `是否后台运行:默认1` `gas偏移量，用于太卷的时候，默认0` 
+bash dmint.sh 4 `pwd`/wallet.json `pwd`/image/xxx "#container" 0 0
 
 # 执行dmint，自定义后台执行数量
 # # sh dmint.sh `进程数量` `钱包.json` `图片文件夹路径` `合集名` `bitworkc` `sats:默认546` `是否后台运行:默认1`
-sh dmint.sh 10 `pwd`/wallet.json `pwd`/image/xxx "#container"
+bash dmint.sh 10 `pwd`/wallet.json `pwd`/image/xxx "#container"
 ```
