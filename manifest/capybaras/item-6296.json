@@ -1,0 +1,73 @@
+{
+  "mainHash": "30e0a5ebffe2a4977bcb3bca7c2704bc16ea808bdaff29d313b033c16b5e5adf",
+  "data": {
+    "args": {
+      "request_dmitem": "6296",
+      "main": "image.png",
+      "i": true,
+      "proof": [
+        {
+          "p": true,
+          "d": "7d0ff558576a58f48c884beba6ae2c311ee491225b181f3dac5865ab83fb02d4"
+        },
+        {
+          "p": true,
+          "d": "07fd9c944dd3deee9ddb1b682eb85e0170bb552a16960e8299964f6313e32f2b"
+        },
+        {
+          "p": true,
+          "d": "5f0e1ec8921410faa8e768dc8fdde8e1159dac59cc3cb877ef6350d61cd84b51"
+        },
+        {
+          "p": false,
+          "d": "86baaa8d431964a5459fb657fbb185032a7a54c88e80a974094dd728d8bf2288"
+        },
+        {
+          "p": false,
+          "d": "cc8ac443235e192810c9866eb84a2b28bd8bb34ec0b0634b59dfe006f77f8ea0"
+        },
+        {
+          "p": true,
+          "d": "d682a645784373dc7e684c3a0853caf912c232ebf5cbcadc9dc5b11a7a5c3297"
+        },
+        {
+          "p": true,
+          "d": "191ce1a79d43203067601a1a34ae6851e6f2cf4c1d4d8a6fb2cb6dc7b34143be"
+        },
+        {
+          "p": false,
+          "d": "07486b74bb8638d331e81dc15b59497d1de0b22ba56c667f098de852ec0b2fa7"
+        },
+        {
+          "p": true,
+          "d": "05ff0361dba3c61aa45dd0746a24d2e003600b795548ae0bb6e2f394d371a87a"
+        },
+        {
+          "p": true,
+          "d": "a41b1d1d26c1a4f81dd6a4efc760f71a5f7a9e29b4a1b0c0f00ed78d1442dbce"
+        },
+        {
+          "p": true,
+          "d": "ee8bfe5547994ed469d068a3f86b366d74c0778dd86dabbb01bbac300b350120"
+        },
+        {
+          "p": false,
+          "d": "4141898d743f8de834b640e2b4f8dd0d851a937c1275e3777cd6c24554aeae59"
+        },
+        {
+          "p": false,
+          "d": "b6a8b43df031b0ca668d523d66ba76eb4be92996bdb62f9d104c71a4308412ca"
+        },
+        {
+          "p": true,
+          "d": "2c00d3b14553a9d3dd224e21baebbcf259f0a0ad4f66a58c4232711748ae064a"
+        }
+      ]
+    },
+    "image.png": {
+      "$b": "89504e470d0a1a0a0000000d4948445200000028000000280802000000039c2f3a000002f049444154789cc5964d6813511080679720943495045391452148a8871402c18316ea4928a4908b20f460483d965e4a6fe9a187e620842286821753eac18b05112c289e5a583dac2bc50849082587b0078d24d8182a588a87a9afcfd9ddb73fa46408e1bdd979f3cdccceceae74333505c3107928549fe048341c8986edb6e7058e44c35b8dbdadc61ec2c8f6bcc088c135c2707bb9f1c32bdb73c6c787bde3c31e6323f55bfc92573f9ec181b110c1fba07a0677dadd6c7cdaf252363edd6977070fd67455d355643f4ca50363214c9d5099d960c09aaee617e73f6d3f666c3e6f9eca9b0d008cf26af70b5b33b6b9c2bc994002eec14c5842d999d9776fdfe0daebe8750b5e7bf24c92a4fdcde564aeb8bfb9ccf48feedfc005ea93b9627e71de8d43c965a49aaef23c3b31ba47e9a50d373e5d8191bafa7c17b7ab0fee1003fed2cbcf9d42a9ece8d6b9d49aaeeeac2f58f2cec0dca5dbb111479fe0b2ab95f0a9af64ae98cc15cd06bc9e190f00ccbccfa4675bcd1a619bf53beb0b8e8fb2c33dc63af3190380b9cb88dee81e0180b8cbbc3dc7768d4df44a7804d90219daa78fa8d4ac9ff97e597b617bf356e6ce5c3956dbb9d484bafdfe230090f1542895095b1e9f38f95e17b8f53cab2d27222aebb52a6e7f85aec3ef3ff2f884c0cfd0eeb19fb793a38cf60e7efaee6ad659fe445c6711d88db09e320b7696608439805d0e5eb35cbc96101b0ca6b9cca98ff60ec447fc3717c24eff33c17ca97cefee2df837b71dc53a634d572b4d23bdb441f42b7353f55ab55eab9214f3affb854c10670bc6813f01589471a5694cc614f202c0d9c44f479464ae58c80431dd56bb7f351a6cb5fb3ec1766c4bc12f3d9665abdd7ffa012a4d030026638a79625b80b1ce009050e4afc609b2c1fe9d48d87cd00263db8c138a0c7d3da1a4908d818bc13c0c831658d2d7224b5770d8d129060dc114333357dbbaab138a0c00ec186e79a7bc86189c1ee4a896620126aec9d6ecd4321442ad340d323bffb3c63a13d7d2852b84449c5ae6c71a8204c4e42f64839eb12cc3a0a10000000049454e44ae426082"
+    }
+  },
+  "targetVector": "6296:any:any:image.png:30e0a5ebffe2a4977bcb3bca7c2704bc16ea808bdaff29d313b033c16b5e5adf",
+  "targethash": "30e0a5ebffe2a4977bcb3bca7c2704bc16ea808bdaff29d313b033c16b5e5adf"
+}
