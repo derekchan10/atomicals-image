@@ -14,8 +14,8 @@ run () {
   echo "wallet:${wallet_json},dir:${dir},container:${container},satsoutput:${satsoutput},daemon=${daemon}"
 
   gas_fee=$(gas_fee)
-  echo "gas_fee:$gas_fee"
   gas_fee=$((gas_fee + gas_offset))
+  echo "gas_fee:$gas_fee"
 
   # 随机获取图片的编号
   filename=$(random_file $dir)

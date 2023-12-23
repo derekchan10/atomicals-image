@@ -72,7 +72,7 @@ gas_fee() {
   if [ -z "$fee" ]; then
     echo $(gas_fee)
   else
-    echo $(echo "$fee + 5" | bc)
+    echo $(echo "$fee" | bc)
   fi
 }
 
