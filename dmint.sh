@@ -24,6 +24,15 @@ run () {
   item=$(basename "$filename" | sed 's/\.[^.]*$//' |  sed 's/item-//')
   echo "item:$item"
 
+  # 检查是否有重复
+  len=$(mint "$wallet_json" "$dir" "0" get-container-item "$container" "$item" | wc -c)
+  echo "len:$len"
+
+  if [ $len -gt 500 ]; then
+    echo "$item minted"
+    exit
+  fi
+
   # 调用命令,用$image传递文件名
   mint "$wallet_json"  "$dir" "$daemon" mint-item "$container" "$item" "image/$filename" --satsbyte="$gas_fee" --funding="funding" --satsoutput="$satsoutput"
 
