@@ -7,9 +7,9 @@ RUN corepack enable yarn
 FROM base AS build
 
 #ARG VERSION=6f1b8d756b8df298a6d55ed1f20ba509afde2b92
-ARG VERSION=main
+ARG VERSION=master
 
-ADD https://github.com/derekchan10/atomicals-js/archive/${VERSION}.zip /tmp/
+ADD https://github.com/atomicals/atomicals-js/archive/${VERSION}.zip /tmp/
 
 RUN set -ex && \
     cd /tmp && unzip ${VERSION} && \
