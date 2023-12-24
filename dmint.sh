@@ -30,6 +30,7 @@ run () {
 
   if [ $len -gt 500 ]; then
     echo "$item minted"
+    rm -rf $dir"/"$filename
     return 0
   else
     # 调用命令,用$image传递文件名
