@@ -30,14 +30,12 @@ run () {
 
   if [ $len -gt 500 ]; then
     echo "$item minted"
-    exit
+    return 0
+  else
+    # 调用命令,用$image传递文件名
+    mint "$wallet_json"  "$dir" "$daemon" mint-item "$container" "$item" "image/$filename" --satsbyte="$gas_fee" --funding="funding" --satsoutput="$satsoutput"
+    return 1
   fi
-
-  # 调用命令,用$image传递文件名
-  mint "$wallet_json"  "$dir" "$daemon" mint-item "$container" "$item" "image/$filename" --satsbyte="$gas_fee" --funding="funding" --satsoutput="$satsoutput"
-
-  # 其他处理逻辑
-  echo "Processed image: $image"
 }
 
 source ./start.sh
