@@ -109,7 +109,7 @@ bash dmint.sh 1 50 `pwd`/wallet.json `pwd`/manifest/fishfaceman "#fishfaceman" 0
 ```shell
 
 # mint ft，自定义后台执行数量
-# sh mint-dft.sh `进程数量` `mint张数` `钱包.json` `FT名称` `是否后台运行:默认1` `gas偏移量（加多少gas）`
+# bash mint-dft.sh `进程数量` `mint张数` `钱包.json` `FT名称` `是否后台运行:默认1` `gas偏移量（加多少gas）`
 bash mint-dft.sh 1 20 `pwd`/wallet.json proton 0 10
 ```
 
