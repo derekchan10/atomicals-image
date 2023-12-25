@@ -105,6 +105,7 @@ bash dmint.sh 1 50 `pwd`/wallet.json `pwd`/manifest/fishfaceman "#fishfaceman" 0
 
 ```
 
+### mint ft
 ```shell
 
 # mint ft，自定义后台执行数量
