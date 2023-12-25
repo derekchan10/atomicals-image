@@ -92,6 +92,26 @@ atom-cli `pwd`/wallets/wallet10.json mint-dft pepe
 
 ```
 
+
+### dmint
+```shell
+# 下载manifest
+curl -o file.zip https://raw.githubusercontent.com/Atombitworker/Atom-map/main/atommap_svg_final.zip && unzip -d image/xxx file.zip
+
+
+# 执行dmint，自定义后台执行数量
+# bash dmint.sh `进程数量` `mint张数` `钱包.json` `json文件夹路径` `合集名` `是否后台运行:默认1` `gas偏移量（加多少gas）`
+bash dmint.sh 1 50 `pwd`/wallet.json `pwd`/manifest/fishfaceman "#fishfaceman" 0 10
+
+```
+
+```shell
+
+# mint ft，自定义后台执行数量
+# sh mint-dft.sh `进程数量` `mint张数` `钱包.json` `FT名称` `是否后台运行:默认1` `gas偏移量（加多少gas）`
+bash mint-dft.sh 1 20 `pwd`/wallet.json proton 0 10
+```
+
 ### image-gen.sh
 ```shell
 sh image-gen.sh "https://cryptopunks.app/public/images/cryptopunks/punk" 0 10 "png" image-punks.txt
@@ -105,32 +125,4 @@ sh image-down.sh image-punks.txt image/punks
 ### mint-nft.sh
 ```shell
 sh mint-nft.sh `pwd`/wallet.json `pwd`/image/punks
-```
-
-### docker mint-nft
-```shell
-atom-mint /root/atomicals-image/wallet.json /root/atomicals-image/image/punks mint-nft image/punk0000.png --satsbyte=1 --funding=funding --bitworkc=0000
-```
-
-### docker atom cli
-```shell
-
-atom-cli `pwd`/wallet.json balances
-```
-
-### atommap
-```shell
-sh mint-atommap.sh `pwd`/wallet-dc.json `pwd`/image/atommap
-```
-
-### dmint
-```shell
-# 下载manifest
-curl -o file.zip https://raw.githubusercontent.com/Atombitworker/Atom-map/main/atommap_svg_final.zip && unzip -d image/xxx file.zip
-
-
-# 执行dmint，自定义后台执行数量
-# # sh dmint.sh `进程数量` `mint张数` `钱包.json` `json文件夹路径` `合集名` `是否后台运行:默认1` `gas偏移量（加多少gas）`
-bash dmint.sh 6 50 `pwd`/wallet.json `pwd`/manifest/fishfaceman "#fishfaceman" 0 10
-
 ```
