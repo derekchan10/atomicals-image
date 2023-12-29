@@ -8,6 +8,7 @@ run () {
   daemon=${3:-1}
   gas_offset=${4:-0}
   gas_limit=${5:-0}
+  funding=${6:-"funding"}
 
   gas_fee=$(gas_fee)
 
@@ -23,7 +24,7 @@ run () {
   echo "gas_fee:$gas_fee"
 
   # 调用命令,用$image传递文件名
-  mint "$wallet_json" "$daemon" mint-dft $ticket --satsbyte="$gas_fee" --funding="funding" --disablechalk
+  mint "$wallet_json" "$daemon" mint-dft $ticket --satsbyte="$gas_fee" --funding="$funding" --disablechalk
 
   return 1
 }
