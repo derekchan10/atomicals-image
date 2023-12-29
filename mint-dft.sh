@@ -14,6 +14,7 @@ run () {
   if [ $gas_limit -gt 0 ]; then
     if [ $gas_fee -ge $gas_limit ]; then
       echo "gas too higher"
+      sleep 3
       return 0
     fi
   fi
