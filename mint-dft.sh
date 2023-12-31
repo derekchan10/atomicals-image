@@ -18,6 +18,8 @@ run () {
       if [ $gas_fee -ge $gas_limit ]; then
         gas_fee=$gas_limit
       fi
+    elif [ "$gas_type" == "3" ]; then
+      gas_fee=$gas_limit
     else
       if [ $gas_fee -ge $gas_limit ]; then
         echo "gas too higher"
