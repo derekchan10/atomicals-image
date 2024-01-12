@@ -15,9 +15,9 @@ run () {
 
   echo "wallet:${wallet_json},dir:${dir},container:${container},satsoutput:${satsoutput},daemon=${daemon}"
 
-  gas_fee=$(gas_fee)
-  echo "gas_fee:$gas_fee"
-  gas_fee=$((gas_fee + gas_offset))
+  fee=$(gas_fee)
+  gas_fee=$((fee + gas_offset))
+  echo "current fee:$fee,offset_fee:$gas_fee"
 
   if [ $gas_limit -gt 0 ]; then
     if [ "$gas_type" == "2" ]; then
