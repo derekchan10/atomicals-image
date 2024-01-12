@@ -18,7 +18,7 @@ RUN set -ex && \
 
 WORKDIR /app
 
-RUN cp -rf ./.env.example ./.env && sed -i 's/ep.atomicals.xyz/ep.atomicalswallet.com/' .env && sed -i 's/CONCURRENCY=4//' .env
+RUN cp -rf ./.env.example ./.env && sed -i 's/ep.atomicals.xyz/ep.atomicalneutron.com/' .env && sed -i 's/CONCURRENCY=4//' .env
 #RUN sed -i 's/https:\/\/ep.atomicals.xyz/http:\/\/192.168.2.88:8080/' .env
 ENV YARN_CACHE_FOLDER=/root/.yarn
 
