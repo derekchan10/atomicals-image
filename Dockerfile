@@ -34,7 +34,7 @@ FROM base AS release
 
 COPY --from=build /app /app
 COPY ./entrypoint.sh /entrypoint.sh
-
 WORKDIR /app
+RUN sed -i 's/REVEAL_INPUT_BYTES_BASE = 66/REVEAL_INPUT_BYTES_BASE = 96/' /app/dist/utils/atomical-operation-builder.js
 
 ENTRYPOINT ["/entrypoint.sh"]
